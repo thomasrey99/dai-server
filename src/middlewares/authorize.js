@@ -1,4 +1,4 @@
-const buildResponse = require("../utils/buildResponse");
+const buildResponse = require("../utils/responseBuilder");
 
 const authorize = (...roles) => {
   return (req, res, next) => {

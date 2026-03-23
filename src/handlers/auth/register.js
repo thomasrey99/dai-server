@@ -1,5 +1,5 @@
 const register = require("../../controllers/auth/register");
-const buildResponse = require("../../utils/buildResponse");
+const buildResponse = require("../../utils/responseBuilder");
 
 const registerHandler = async (req, res) => {
   try {
