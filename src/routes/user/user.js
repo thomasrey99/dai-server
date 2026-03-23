@@ -1,6 +1,6 @@
 const {Router}=require('express');
-const userGetRoutes=require("./user/user.get.routes");
-const userPostRoutes=require("./user/user.post.routes");
+const userGetRoutes=require("./user.get.routes");
+const userPostRoutes=require("./user.post.routes");
 const userRouter=Router();
 
 userRouter.use("/", userGetRoutes)
