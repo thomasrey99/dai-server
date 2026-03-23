@@ -3,6 +3,7 @@ const buildResponse = require("../utils/responseBuilder");
 
 const authMiddleware = (req, res, next) => {
   try {
+
     const authHeader = req.headers.authorization;
 
     if (!authHeader) throw new Error("Token requerido");
