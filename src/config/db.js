@@ -14,6 +14,7 @@ const database = new Sequelize(DATABASE_URL, {
       rejectUnauthorized: false,
     },
   },
+  logging: false
 });
 
 (async () => {
