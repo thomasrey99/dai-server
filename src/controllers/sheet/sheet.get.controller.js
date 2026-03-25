@@ -1,4 +1,4 @@
-const { sheets } = require("../../config/google");
+/*const { sheets } = require("../../config/google");
 
 const getSheetData = async () => {
   const spreadsheetId = process.env.SPREADSHEET_ID;
@@ -52,6 +52,47 @@ const getSheetData = async () => {
 
   } catch (error) {
     console.error("❌ Error general al obtener sheets");
+    console.error(error.message);
+    throw error;
+  }
+};
+
+module.exports = { getSheetData };*/
+
+const { sheets } = require("../../config/google");
+
+const getSheetData = async () => {
+  const spreadsheetId = process.env.SPREADSHEET_ID;
+  const sheetName = "CONTEO HECHOS 2024";
+
+  try {
+    const safeName = `'${sheetName.replace(/'/g, "\\'")}'`;
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: `${sheetName}!A1:Z1000`,
+    });
+
+    const rows = response.data.values;
+
+    if (!rows || rows.length === 0) return [];
+
+    const headers = rows[0].map((h) => h.trim());
+
+    const data = rows.slice(1).map((row) => {
+      const obj = {};
+
+      headers.forEach((header, i) => {
+        obj[header] = row[i] ?? null;
+      });
+
+      return obj;
+    });
+
+    return data;
+
+  } catch (error) {
+    console.error("❌ Error al obtener la hoja específica");
     console.error(error.message);
     throw error;
   }
