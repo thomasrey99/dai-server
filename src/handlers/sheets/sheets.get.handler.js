@@ -6,23 +6,13 @@ const getSheetHandler = async (req, res) => {
     const data = await getSheetData();
 
     return res.status(200).json(
-      buildResponse({
-        status: 200,
-        error: false,
-        message: "Datos obtenidos correctamente",
-        data,
-      })
+      data
     );
   } catch (error) {
     console.error(error);
 
     return res.status(500).json(
-      buildResponse({
-        status: 500,
-        error: true,
-        message: "Error al obtener datos del sheet",
-        data: null,
-      })
+      []
     );
   }
 };
