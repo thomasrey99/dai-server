@@ -3,7 +3,7 @@ const { sheets } = require("../../config/google");
 const getSheetData = async () => {
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: process.env.SPREADSHEET_ID,
-    range: "Ventas!A1:Z1000",
+    range: "RESULTADOS FILTRADOS!A1:Z1000",
   });
 
   const rows = response.data.values;
